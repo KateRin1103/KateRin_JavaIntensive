@@ -1,6 +1,8 @@
 package jrr.by.lesson1;
 
+
 public class MathOperations {
+
 
     MathOperations() {
     }

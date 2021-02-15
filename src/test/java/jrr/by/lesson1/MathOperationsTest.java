@@ -1,8 +1,10 @@
 package jrr.by.lesson1;
 
 import org.apache.log4j.Logger;
+
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class MathOperationsTest {
 
