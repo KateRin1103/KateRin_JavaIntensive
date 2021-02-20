@@ -9,7 +9,7 @@ class PalindromeTest {
     @Test
     void isPalindrome1() {
         Palindrome palindrome = new Palindrome();
-        boolean actual = palindrome.isPalindrome("1 23 32 1");
+        boolean actual = palindrome.isPalindrome("1 23   32 1");
         assertTrue(actual);
     }
 
