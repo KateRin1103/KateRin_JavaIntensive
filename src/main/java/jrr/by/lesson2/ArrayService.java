@@ -9,8 +9,6 @@ public class ArrayService {
     ArrayService() {
     }
 
-    static Logger logger = Logger.getLogger(ArrayService.class);
-
     static int[] create(int size) {
         return new int[size];
     }
@@ -24,6 +22,7 @@ public class ArrayService {
     }
 
     static void printArray(int[] array) {
+        Logger logger = Logger.getLogger(ArrayService.class);
         logger.info(Arrays.toString(array));
     }
 
@@ -40,7 +39,8 @@ public class ArrayService {
         for (int j : array) {
             summing += j;
         }
-        return (double) summing / array.length;
+        if (array.length != 0) return (double) summing / array.length;
+        else throw new ArithmeticException();
     }
 
     static int[] sort(int[] array) {

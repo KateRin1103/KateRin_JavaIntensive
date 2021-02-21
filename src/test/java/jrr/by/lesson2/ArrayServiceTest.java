@@ -1,25 +1,34 @@
 package jrr.by.lesson2;
 
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 
 import static jrr.by.lesson2.ArrayService.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class ArrayServiceTest {
+
+    Logger logger = Logger.getLogger(ArrayService.class);
 
     @Test
     public void testCreate() {
         int[] array = ArrayService.create(7);
+        assertEquals(7, array.length);
         logger.info("Array: " + Arrays.toString(array));
     }
 
     @Test
     public void testFillRandomly() {
-        int[] array = new int[10];
-        fillRandomly(array);
-        logger.info("Array: " + Arrays.toString(array));
+        int[] array1 = new int[10];
+        int[] array2 = new int[10];
+        fillRandomly(array2);
+        fillRandomly(array1);
+        assertNotEquals(Arrays.toString(array1), Arrays.toString(array2));
     }
 
     @Test
@@ -31,15 +40,21 @@ public class ArrayServiceTest {
     @Test
     public void testSum() {
         int[] array = new int[]{1, 2, 3, 4, 5, 4, 3, 2, 1};
-        Assert.assertEquals(25, sum(array));
+        assertEquals(25, sum(array));
         logger.info("Sum = " + sum(array));
     }
 
     @Test
     public void testAvg() {
         int[] array = new int[]{1, 2, 3, 4, 5, 4, 3, 2, 3};
-        Assert.assertEquals(3.0, avg(array));
+        assertEquals(3.0, avg(array));
         logger.info("Avg = " + avg(array));
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void testAvgZero() {
+        int[] array = new int[0];
+        assertEquals(3.0, avg(array));
     }
 
     @Test
